@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="icon" type="image/png"  href="{% static 'todo/logo.png' %}">
-    <title>Todo Woo</title>
+    <title>ToDoo</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">
          <img src="{% static 'todo/logo.png' %}" width="30" height="30" class="d-inline-block align-top">
-        <span>Todo Woo</span>
+        <span>To Doo</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,6 +42,9 @@
     {% endif %}
     <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
+                <li class="nav-item {{ user.username }}">
+                    <a class="nav-link" href="{% url 'home' %}">Loggen in as: {{ user.username }}</a>
+                </li>
                 <li class="nav-item">
                     <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
                     <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
